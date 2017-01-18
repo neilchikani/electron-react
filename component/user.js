@@ -16,18 +16,9 @@ var UserComponent = React.createClass({
             </button>
             <a className="navbar-brand">Welcome <span id="hypUserName"></span></a>
           </div>
-          <LogoutDropDown/>
-          <ul className="nav navbar-top-links navbar-right">
-            <li className="dropdown">
-              <a className="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                <i className="fa fa-user fa-fw"></i><i className="fa fa-caret-down"></i>
-              </a>
-              <ul className="dropdown-menu dropdown-user">
-                <li><a id="hypLogout" href="#"><i className="fa fa-sign-out fa-fw"></i>Logout</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <div className="navbar-top-links navbar-right">
+            <LogoutDropDown/>
+          </div>
           <div className="navbar-default sidebar" role="navigation">
             <div className="sidebar-nav navbar-collapse">
               <ul className="nav in" id="side-menu">
