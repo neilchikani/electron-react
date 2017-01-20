@@ -2,7 +2,15 @@ import React from 'react';
 import { Link } from 'react-router'
 import Modal from './modal.js'
 import LogoutDropDown from './logoutDropDown.js'
+import UserBetForm from './userBetForm'
+
 var UserComponent = React.createClass({
+  getInitialState:function () {
+    return{
+      data: "this data is for modal data"
+    }
+  },
+
   render: function () {
     return (
       <div>
@@ -62,7 +70,9 @@ var UserComponent = React.createClass({
                     <h3 className="no-margin padding-top-5"> My Bets </h3>
                   </div>
                   <div className="pull-right">
-                    <Modal/>
+                    <Modal heading="User Bet Form" buttonTitle="Make a new Bet">
+                      <UserBetForm/>
+                    </Modal>
                   </div>
                 </div>
                 <div className="panel-body">
@@ -88,6 +98,7 @@ var UserComponent = React.createClass({
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
               <div className="panel panel-default">

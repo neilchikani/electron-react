@@ -20,7 +20,9 @@ var TabLinks = React.createClass({
 
   handleSubmit: function (event) {
     event.preventDefault();
-    var filter = { "include": "roles" };
+    var filter = { "include": "roles" },
+      that = this;
+
     $.ajax({
       url: baseUrl + 'users/login?filter=' + JSON.stringify(filter),
       method: 'POST',
@@ -30,8 +32,14 @@ var TabLinks = React.createClass({
             url: baseUrl + 'Users/'+ result.userId + '?access_token=' + result.id + '&filter=' + JSON.stringify(filter),
             method: 'GET',
             success: function (userInfo) {
-                console.log(userInfo.roles[0].id)
-                if(userInfo.roles[0].id == '1'){
+              if(('sessionStorage' in window) && window['sessionStorage'] !== null){
+                sessionStorage.setItem('username',that.state.username);
+                sessionStorage.setItem('userId',result.userId);
+                sessionStorage.setItem('roleId',userInfo.roles[0] != undefined ? userInfo.roles[0].id : "");
+                sessionStorage.setItem('accesstoken',result.id);
+
+              }
+              if(userInfo.roles[0].id == '1'){
                   Router.hashHistory.push('/admin');
                 }else{
                   Router.hashHistory.push('/user');
@@ -93,7 +101,6 @@ var TabLinks = React.createClass({
         </div>
       </div>
     </section>
-
     )
   }
 });
