@@ -7,9 +7,8 @@ var EmployeeGridRow = React.createClass({
   render : function(){
     var gameStatus = '',
         showEditLink = '';
-    console.log(this.props.item);
     if(this.props.item.enddate < new Date().toJSON() && this.props.item.status == '1'){
-      gameStatus = <a class="closegame" href="#">Close Game</a>;
+      gameStatus = <a className="closegame" href="#">Close Game</a>;
     }else if(this.props.item.status == '1'){
       gameStatus = <span className="pending"> Pending </span>
       showEditLink = <a href="" className="editgame"> Edit </a>
