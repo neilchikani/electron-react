@@ -2,11 +2,15 @@ import React from "react"
 import LogoutDropDown from './logoutDropDown'
 
 export default React.createClass({
+  handleClick:function (e) {
+    console.log(e);
+  },
   render(){
+    var that = this;
     return(
       <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
         <div className="navbar-header">
-          <a className="navbar-brand">Welcome <span id="hypUserName"></span></a>
+          <a className="navbar-brand">Welcome </a>
         </div>
         <div className="navbar-top-links navbar-right">
           <LogoutDropDown/>
@@ -16,7 +20,7 @@ export default React.createClass({
             <ul className="nav in" id="side-menu">
               {
                 this.props.links.map(function (item, i) {
-                  return ( <li key={i}><a href=""> {item}</a> </li>)
+                  return ( <li key={i}><a onClick={that.handleClick.bind(null,item.toLowerCase())} className={item.toLowerCase()} href="javascript:void(0)"> {item}</a> </li>)
                 })
               }
             </ul>
