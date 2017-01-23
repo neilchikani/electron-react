@@ -5,17 +5,28 @@ var baseUrl = 'http://localhost:4000/api/',
 
 var EmployeeGridRow = React.createClass({
   render : function(){
+    var gameStatus = '',
+        showEditLink = '';
+    console.log(this.props.item);
+    if(this.props.item.enddate < new Date().toJSON() && this.props.item.status == '1'){
+      gameStatus = <a class="closegame" href="#">Close Game</a>;
+    }else if(this.props.item.status == '1'){
+      gameStatus = <span className="pending"> Pending </span>
+      showEditLink = <a href="" className="editgame"> Edit </a>
+    }else{
+      gameStatus = <span className="completed"> Completed</span>
+    }
     return (
       <tr>
         <td>{this.props.item.id}</td>
         <td>{this.props.item.name}</td>
         <td>{this.props.item.sports.name}</td>
-        <td>{this.props.item.status}</td>
-        <td><a className='editgame' id='" +result[i].id + "' href='#'>Edit</a></td>
-
+        <td>{gameStatus}</td>
+        <td>{showEditLink}</td>
       </tr>
     );
   }
+
 });
 
 var EmployeeGridTable = React.createClass({
@@ -37,7 +48,6 @@ var EmployeeGridTable = React.createClass({
   render : function(){
     var rows = [];
     this.state.items.forEach(function(item){
-      // console.log(item);
       rows.push(<EmployeeGridRow key={item.id} item={item}/>);
     });
     return (<table className="table table-bordered table-responsive">
