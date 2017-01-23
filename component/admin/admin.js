@@ -23,7 +23,8 @@ var AdminComponent = React.createClass({
           placeholderText: 'Game1'
         }
       ],
-      sidebarLink:['Games', 'League', 'Team']
+
+      sidebarLink:['Games', 'Games1', 'Games2']
     }
   },
   render: function () {
