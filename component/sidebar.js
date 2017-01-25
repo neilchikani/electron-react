@@ -8,6 +8,7 @@ export default React.createClass({
   render(){
     var that = this;
     return(
+
       <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
         <div className="navbar-header">
           <a className="navbar-brand">Welcome </a>
@@ -19,9 +20,7 @@ export default React.createClass({
           <div className="sidebar-nav navbar-collapse">
             <ul className="nav in" id="side-menu">
               {
-                this.props.links.map(function (item, i) {
-                  return ( <li key={i}><a onClick={that.handleClick.bind(null,item.toLowerCase())} className={item.toLowerCase()} href="javascript:void(0)"> {item}</a> </li>)
-                })
+                this.props.links.map((item,i) => <li key={i}><a onClick={this.handleClick.bind(null,item.toLowerCase())} className={item.toLowerCase()} href="javascript:void(0)"> {item}</a> </li>)
               }
             </ul>
           </div>
