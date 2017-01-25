@@ -1,12 +1,13 @@
 import React from 'react'
-import { Router, Route, hashHistory } from 'react-router'
+import { Router, Route, hashHistory, IndexRoute } from 'react-router'
 import TabLinks from './entry/login'
 import TabsContents from './entry/register'
-import AdminComponent from './admin/admin'
+import AdminComponent from './admin/index'
 import GamesComponent from './admin/gamesComponent'
 import LeagueComponent from './admin/leagueComponent'
 import TeamComponent from './admin/teamComponent'
-import UserComponent from './user/user'
+import UserComponent from './user/index'
+import App from '../component/app'
 
 export default React.createClass({
   render: function () {
@@ -16,9 +17,11 @@ export default React.createClass({
         <Route path="/login" component={TabLinks}/>
         <Route path="/register" component={TabsContents}/>
         <Route path="/admin" component={AdminComponent}>
-          <Route path="/games" component={GamesComponent}/>
+          <IndexRoute component={GamesComponent}/>
+          <Route path="/games" component={GamesComponent} />
+          <Route path="/games/:user_id" component={GamesComponent}/>
           <Route path="/league" component={LeagueComponent}/>
-          <Route path="/team" component={TeamComponent}/>
+          <Route path="/teams" component={TeamComponent}/>
         </Route>
         <Route path="/user" component={UserComponent}/>
       </Router>

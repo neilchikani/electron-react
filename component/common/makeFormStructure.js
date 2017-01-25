@@ -17,7 +17,11 @@ var FormElements = React.createClass({
           <div className="form-group">
             <label htmlFor={this.props.formdata.id} className="control-label">{this.props.formdata.labelName}</label>
             <select name={this.props.formdata.id} className={this.props.formdata.className}>
-              <option value='0'>Select Game</option>
+              {
+                this.props.formdata.options.map(function (item, i) {
+                  return ( <option value={item.toLowerCase()}> {item} </option>)
+                })
+              }
             </select>
           </div>
         );

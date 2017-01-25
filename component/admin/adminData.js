@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 var baseUrl = 'http://localhost:4000/api/',
   filter =  { "include": "sports" };
 
 var EmployeeGridRow = React.createClass({
+  editForm: function (id) {
+    console.log(id);
+  },
   render : function(){
     var gameStatus = '',
         showEditLink = '';
@@ -11,7 +15,7 @@ var EmployeeGridRow = React.createClass({
       gameStatus = <a className="closegame" href="#">Close Game</a>;
     }else if(this.props.item.status == '1'){
       gameStatus = <span className="pending"> Pending </span>
-      showEditLink = <a href="" className="editgame"> Edit </a>
+      showEditLink = <Link to='games' params={{ user_id: this.props.item.id }} > Edit </Link>
     }else{
       gameStatus = <span className="completed"> Completed</span>
     }
@@ -36,7 +40,7 @@ var EmployeeGridTable = React.createClass({
   },
   componentDidMount:function(){
 
-    $.get(baseUrl + 'Games?access_token=' + sessionStorage.accesstoken + "&filter=" + JSON.stringify(filter), function(data){
+    $.get(baseUrl + 'games?access_token=' + sessionStorage.accesstoken + "&filter=" + JSON.stringify(filter), function(data){
       if(this.isMounted()){
         this.setState({
           items: data
