@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router'
-import Modal from './modal.js'
-import LogoutDropDown from './logoutDropDown.js'
+import Modal from '../common/modal.js'
+import LogoutDropDown from '../common/logoutDropDown.js'
 import UserBetForm from './userBetForm'
 
 var UserComponent = React.createClass({
