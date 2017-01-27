@@ -15,7 +15,7 @@ var EmployeeGridRow = React.createClass({
       gameStatus = <a className="closegame" href="#">Close Game</a>;
     }else if(this.props.item.status == '1'){
       gameStatus = <span className="pending"> Pending </span>
-      showEditLink = <Link to='games' params={{ user_id: this.props.item.id }} > Edit </Link>
+      showEditLink = <Link to='games' params={{ user_id: 1 }} > Edit </Link>
     }else{
       gameStatus = <span className="completed"> Completed</span>
     }
